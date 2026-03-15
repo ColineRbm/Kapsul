@@ -81,7 +81,7 @@ body {
 }
 
 .card-label {
-  font-size: 1.6rem;
+  font-size: 0.85rem;
   color: var(--second-color-font);
 }
 
@@ -96,4 +96,41 @@ body {
 
 .expense {
   color: #ef4444;
+}
+
+.form-div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.form-div input,
+.form-div select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--main-color-font);
+  background-color: #f9fafb;
+  flex: 1;
+}
+
+.form-div button {
+  padding: 0.6rem 1.5rem;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-div button:hover {
+  background-color: #00a876;
 }

@@ -36,7 +36,26 @@
               <span class="card-amount expense">- 750,00 €</span>
             </div>
           </section>
-          <section>Formulaire</section>
+          <section class="form-section">
+            <h2>Ajouter une transaction</h2>
+            <div class="form-div">
+              <input type="text" id="description" placeholder="Description" />
+              <input type="number" id="montant" placeholder="Montant (€)" />
+              <select id="type">
+                <option value="income">Revenu</option>
+                <option value="expense">Dépense</option>
+              </select>
+              <select id="categorie">
+                <option value="alimentation">Alimentation</option>
+                <option value="logement">Logement</option>
+                <option value="transport">Transport</option>
+                <option value="salaire">Salaire</option>
+                <option value="loisirs">Loisirs</option>
+                <option value="autre">Autres</option>
+              </select>
+              <button id="button-add">Ajouter</button>
+            </div>
+          </section>
           <section>Liste transactions</section>
         </main>
       </div>
