@@ -25,15 +25,17 @@
           <section class="summary">
             <div class="card">
               <span class="card-label">Solde total</span>
-              <span class="card-amount">2 450,00 €</span>
+              <span class="card-amount" id="solde-total">0,00 €</span>
             </div>
             <div class="card">
               <span class="card-label">Revenus du mois</span>
-              <span class="card-amount income">+ 3 200,00 €</span>
+              <span class="card-amount income" id="total-revenus">0,00 €</span>
             </div>
             <div class="card">
               <span class="card-label">Dépenses du mois</span>
-              <span class="card-amount expense">- 750,00 €</span>
+              <span class="card-amount expense" id="total-depenses"
+                >0,00 €</span
+              >
             </div>
           </section>
           <section class="form-section">
@@ -51,7 +53,7 @@
                 <option value="transport">Transport</option>
                 <option value="salaire">Salaire</option>
                 <option value="loisirs">Loisirs</option>
-                <option value="autre">Autres</option>
+                <option value="autres">Autres</option>
               </select>
               <button id="button-add">Ajouter</button>
             </div>
