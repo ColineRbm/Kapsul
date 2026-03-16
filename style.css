@@ -151,6 +151,7 @@ body {
   border-radius: 10px;
   margin-bottom: 0.75rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  gap: 2rem;
 }
 
 .transaction-item span {
@@ -160,4 +161,23 @@ body {
 
 .transaction-item span:last-child {
   text-align: right;
+}
+
+.edit-input {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--main-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--main-color-font);
+  background-color: white;
+  flex: 1;
+}
+
+.saveButton {
+  padding: 0.4rem 0.8rem;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }

@@ -16,17 +16,18 @@ function updateSoldes() {
     "+ " + totalRevenus.toFixed(2) + " €";
   document.getElementById("total-depenses").textContent =
     "- " + totalDepenses.toFixed(2) + " €";
-}
+} // ← FIN updateSoldes
 
-//  1-Récupérer l'élément HTML button
+// 1-Récupérer l'élément HTML button
 const addButton = document.getElementById("button-add");
 
-// Lui assigner une fonction d'écoute au click
+// 1.1-Lui assigner une fonction d'écoute au click
 addButton.addEventListener("click", function () {
   const description = document.getElementById("description").value;
   const montant = document.getElementById("montant").value;
   const type = document.getElementById("type").value;
   const categorie = document.getElementById("categorie").value;
+
   const transaction = {
     id: Date.now(),
     description: description,
@@ -35,95 +36,129 @@ addButton.addEventListener("click", function () {
     categorie: categorie,
   };
 
-  // Ajouter les nouvelles transactions au tableau transaction et afficher
+  // 1.2-Ajouter les nouvelles transactions au tableau
   transactions.push(transaction);
-  console.log(transactions);
 
-  // Appeller la fonction d'update des totaux
+  // 1.3-Appeler la fonction d'update des totaux
   updateSoldes();
 
-  // Pour stocker la donnée: transforme le tableau des transactions en données texte
+  // 1.4-Stocker la donnée en localStorage
   localStorage.setItem("transactions", JSON.stringify(transactions));
 
-  // Récupérer l'élément HTML 'transactions-list' pour identifier où on va afficher les transactions
+  // 1.5-Récupérer l'élément HTML 'transactions-list'
   const liste = document.getElementById("transactions-list");
 
-  // Ajout de code HTML via JS (ajouter la liste des transactions à la suite sur la page)
+  // 1.6-Ajout de code HTML via JS
   liste.innerHTML += `
-  <div class="transaction-item ${transaction.type}" data-id="${transaction.id}">
-    <span>${transaction.description}</span>
-    <span>${transaction.categorie}</span>
-    <span class="${transaction.type}">
+    <div class="transaction-item ${transaction.type}" data-id="${transaction.id}">
+      <span>${transaction.description}</span>
+      <span>${transaction.categorie}</span>
+      <span class="${transaction.type}">
         ${transaction.type === "expense" ? "- " : "+ "}${transaction.montant} €
-    </span>
-    <div class="transaction-actions">
-      <button class="suppButton" data-id="${transaction.id}">
-      <i data-lucide="trash-2"></i>
-      </button>
-    </div>
+      </span>
+      <div class="transaction-actions">
+        <button class="editButton" data-id="${transaction.id}"><i data-lucide="pencil"></i></button>
+        <button class="suppButton" data-id="${transaction.id}"><i data-lucide="trash-2"></i></button>
+      </div>
     </div>
   `;
   lucide.createIcons();
 
   document.getElementById("description").value = "";
   document.getElementById("montant").value = "";
+}); // ← FIN addButton addEventListener
 
-  console.log(transaction);
-});
-
-// 2-Créer une fonction de stockage local des données (ne pas supprimer après un refresh)
+// 2-Stockage local des données
 const donneesStockees = localStorage.getItem("transactions");
 
-// Condition si 'non vide' à l'ouverture, alors jouer la fonction
+// 2.1-Condition si 'non vide' à l'ouverture
 if (donneesStockees) {
   const transactionsSauvegardees = JSON.parse(donneesStockees);
   transactionsSauvegardees.forEach(function (transaction) {
     transactions.push(transaction);
     const liste = document.getElementById("transactions-list");
     liste.innerHTML += `
-      <div class="transaction-item ${transaction.type}">
+      <div class="transaction-item ${transaction.type}" data-id="${transaction.id}">
         <span>${transaction.description}</span>
         <span>${transaction.categorie}</span>
         <span class="${transaction.type}">
           ${transaction.type === "expense" ? "- " : "+ "}${transaction.montant} €
         </span>
         <div class="transaction-actions">
-          <button class="suppButton" data-id="${transaction.id}">
-          <i data-lucide="trash-2"></i>
-          </button>
+          <button class="editButton" data-id="${transaction.id}"><i data-lucide="pencil"></i></button>
+          <button class="suppButton" data-id="${transaction.id}"><i data-lucide="trash-2"></i></button>
         </div>
       </div>
     `;
   });
   updateSoldes();
   lucide.createIcons();
-}
+} // ← FIN if localStorage
 
-// 3-Supprimer une transaction
+// 3-Gérer les clics sur la liste
 const liste = document.getElementById("transactions-list");
 
 liste.addEventListener("click", function (event) {
+  // 3.1-Suppression
   const bouton = event.target.closest(".suppButton");
-
   if (bouton) {
     const confirmation = confirm("Supprimer cette transaction ?");
-
-    if (!confirmation) return; // si l'utilisateur clique Annuler, on arrête
+    if (!confirmation) return;
     const id = parseInt(bouton.dataset.id);
-
-    // Supprimer du tableau
     const index = transactions.findIndex((t) => t.id === id);
     transactions.splice(index, 1);
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+    bouton.closest(".transaction-item").remove();
+    updateSoldes();
+  } // ← FIN suppression
 
-    // Mettre à jour localStorage
+  // 3.2-Modification
+  const boutonEdit = event.target.closest(".editButton");
+  if (boutonEdit) {
+    const id = parseInt(boutonEdit.dataset.id);
+    const transaction = transactions.find((t) => t.id === id);
+    const item = boutonEdit.closest(".transaction-item");
+    item.innerHTML = `
+      <input class="edit-input" type="text" value="${transaction.description}" data-field="description" />
+      <input class="edit-input" type="number" value="${transaction.montant}" data-field="montant" />
+      <select class="edit-input" data-field="type">
+        <option value="income" ${transaction.type === "income" ? "selected" : ""}>Revenu</option>
+        <option value="expense" ${transaction.type === "expense" ? "selected" : ""}>Dépense</option>
+      </select>
+      <button class="saveButton" data-id="${id}"><i data-lucide="check"></i></button>
+    `;
+    lucide.createIcons();
+  } // ← FIN modification
+
+  const boutonSave = event.target.closest(".saveButton");
+  if (boutonSave) {
+    const id = parseInt(boutonSave.dataset.id);
+    const item = boutonSave.closest(".transaction-item");
+    const inputs = item.querySelectorAll(".edit-input");
+
+    const index = transactions.findIndex((t) => t.id === id);
+    transactions[index].description = inputs[0].value;
+    transactions[index].montant = parseFloat(inputs[1].value);
+    transactions[index].type = inputs[2].value;
+
     localStorage.setItem("transactions", JSON.stringify(transactions));
 
-    // Supprimer l'élément HTML
-    bouton.closest(".transaction-item").remove();
-
-    // Mettre à jour les soldes
+    const t = transactions[index];
+    item.innerHTML = `
+      <span>${t.description}</span>
+      <span>${t.categorie}</span>
+      <span class="${t.type}">
+        ${t.type === "expense" ? "- " : "+ "}${t.montant} €
+      </span>
+      <div class="transaction-actions">
+        <button class="editButton" data-id="${t.id}"><i data-lucide="pencil"></i></button>
+        <button class="suppButton" data-id="${t.id}"><i data-lucide="trash-2"></i></button>
+      </div>
+    `;
+    item.className = `transaction-item ${t.type}`;
+    lucide.createIcons();
     updateSoldes();
-  }
-});
+  } // ← FIN sauvegarde
+}); // ← FIN liste addEventListener
 
 lucide.createIcons();
