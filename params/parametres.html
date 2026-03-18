@@ -4,36 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kapsul | Paramètres</title>
-    <link rel="stylesheet" href="../.general/style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="style-params.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
+    <div class="mobile-header">
+      <a href="../landing.html">Kapsul</a>
+    </div>
     <div class="app">
-
       <aside class="sidebar">
         <div class="logo-block">
-          <a href="../dashboard/index.html" class="logo">Kapsul</a>
+          <a href="../landing.html" class="logo">Kapsul</a>
           <span class="logo-sub">Budget perso</span>
         </div>
         <nav>
-          <a href="../dashboard/index.html">
-            <span class="nav-emoji">💰</span> Transactions
+          <a href="../transactions/index.html">
+            <span class="nav-emoji">💰</span>
+            <span>Transactions</span>
           </a>
           <a href="../stats/statistiques.html">
-            <span class="nav-emoji">📊</span> Statistiques
+            <span class="nav-emoji">📊</span>
+            <span>Statistiques</span>
           </a>
           <a href="parametres.html" class="active">
-            <span class="nav-emoji">⚙️</span> Paramètres
+            <span class="nav-emoji">⚙️</span>
+            <span>Paramètres</span>
           </a>
         </nav>
-        <div class="sidebar-footer">
+        <a href="parametres.html" class="sidebar-footer">
           <div class="avatar" id="sidebar-avatar">K</div>
           <div>
             <div class="user-name" id="sidebar-username">Mon compte</div>
             <div class="user-plan">Kapsul</div>
           </div>
-        </div>
+        </a>
       </aside>
 
       <div class="content">
@@ -43,12 +48,12 @@
 
         <main>
           <div class="params-grid">
-
-            <!-- NOM D'UTILISATEUR -->
             <div class="params-card">
               <div class="params-card-header">
                 <span class="params-card-title">👤 Nom d'utilisateur</span>
-                <span class="params-card-desc">Affiché dans la barre latérale</span>
+                <span class="params-card-desc"
+                  >Affiché dans la barre latérale</span
+                >
               </div>
               <div class="params-input-row">
                 <input
@@ -57,19 +62,26 @@
                   class="params-input"
                   placeholder="Ton prénom..."
                   maxlength="20"
+                  autocomplete="off"
                 />
-                <button class="params-btn" id="btn-save-username">Sauvegarder</button>
+                <button class="params-btn" id="btn-save-username">
+                  Sauvegarder
+                </button>
               </div>
-              <span id="username-feedback" style="font-size:0.8rem; color: var(--green); display:none;">
+              <span
+                id="username-feedback"
+                style="font-size: 0.8rem; color: var(--green); display: none"
+              >
                 ✓ Nom mis à jour !
               </span>
             </div>
 
-            <!-- THÈME -->
             <div class="params-card">
               <div class="params-card-header">
                 <span class="params-card-title">🌙 Thème</span>
-                <span class="params-card-desc">Basculer entre le mode clair et sombre</span>
+                <span class="params-card-desc"
+                  >Basculer entre le mode clair et sombre</span
+                >
               </div>
               <div class="theme-toggle-row">
                 <span class="theme-label" id="theme-label">Mode clair</span>
@@ -80,22 +92,43 @@
               </div>
             </div>
 
-            <!-- RÉINITIALISATION -->
             <div class="params-card">
               <div class="params-card-header">
-                <span class="params-card-title">🗑️ Réinitialiser les données</span>
-                <span class="params-card-desc">Supprime toutes les transactions enregistrées. Cette action est irréversible.</span>
+                <span class="params-card-title"
+                  >🗑️ Réinitialiser les données</span
+                >
+                <span class="params-card-desc"
+                  >Supprime toutes les transactions enregistrées. Cette action
+                  est irréversible.</span
+                >
               </div>
               <div>
-                <button class="params-btn danger" id="btn-reset">Supprimer toutes les données</button>
+                <button class="params-btn danger" id="btn-reset">
+                  Supprimer toutes les données
+                </button>
               </div>
             </div>
-
           </div>
         </main>
       </div>
-
     </div>
+
+    <!-- Tab bar mobile — EN DEHORS du .app -->
+    <nav class="tab-bar">
+      <a href="../transactions/index.html">
+        <span class="tab-emoji">💰</span>
+        <span>Transactions</span>
+      </a>
+      <a href="../stats/statistiques.html">
+        <span class="tab-emoji">📊</span>
+        <span>Stats</span>
+      </a>
+      <a href="parametres.html" class="active">
+        <span class="tab-emoji">⚙️</span>
+        <span>Paramètres</span>
+      </a>
+    </nav>
+
     <script src="params.js"></script>
   </body>
 </html>

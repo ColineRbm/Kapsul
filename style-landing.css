@@ -1,0 +1,253 @@
+/* ─── BODY LANDING ─── */
+.landing-body {
+  background: var(--blue-dark);
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── NAV ─── */
+.landing-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid #2a3566;
+}
+
+.landing-logo {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--yellow);
+  letter-spacing: -0.5px;
+}
+
+.landing-nav-link {
+  font-size: 14px;
+  color: var(--blue-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.landing-nav-link:hover {
+  color: var(--yellow);
+}
+
+/* ─── HERO ─── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.deco {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+  background: var(--yellow);
+  pointer-events: none;
+}
+
+.deco-1 {
+  width: 320px;
+  height: 320px;
+  top: -100px;
+  left: -80px;
+}
+.deco-2 {
+  width: 220px;
+  height: 220px;
+  bottom: -60px;
+  right: -60px;
+}
+
+.hero-tag {
+  background: var(--yellow);
+  color: var(--blue-dark);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  animation: fadeDown 0.5s ease both;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 52px;
+  line-height: 1.15;
+  color: var(--yellow-pale);
+  margin-bottom: 20px;
+  animation: fadeDown 0.5s 0.1s ease both;
+}
+
+.hero-title .une {
+  display: inline-block;
+  color: var(--yellow);
+  transform: rotate(-4deg);
+  position: relative;
+  top: -2px;
+  font-style: italic;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+.hero-title span {
+  color: var(--yellow);
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: #6070a0;
+  max-width: 460px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  animation: fadeDown 0.5s 0.2s ease both;
+}
+
+.hero-sub strong {
+  color: var(--yellow-light);
+  font-weight: 500;
+}
+
+.hero-tagline {
+  font-size: 13px;
+  color: #4a5a8a;
+  font-style: italic;
+  margin-bottom: 40px;
+  animation: fadeDown 0.5s 0.25s ease both;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--blue-dark);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  animation: fadeDown 0.5s 0.3s ease both;
+  transition:
+    transform 0.15s,
+    background 0.15s;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.hero-btn:hover {
+  background: var(--yellow-light);
+  transform: translateY(-2px);
+}
+
+.btn-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.65;
+  margin-top: 3px;
+}
+
+/* ─── FEATURES ─── */
+.features {
+  background: var(--yellow-pale);
+  padding: 60px 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  border: 1px solid var(--yellow-light);
+  box-shadow: var(--shadow);
+  animation: fadeUp 0.5s ease both;
+}
+
+.feature-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.feature-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.feature-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.feature-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--blue-dark);
+  margin-bottom: 8px;
+}
+
+.feature-desc {
+  font-size: 14px;
+  color: #a09060;
+  line-height: 1.6;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .landing-nav {
+    padding: 16px 24px;
+  }
+  .hero {
+    padding: 60px 24px 40px;
+  }
+  .hero-title {
+    font-size: 34px;
+  }
+  .hero-sub {
+    font-size: 15px;
+  }
+  .features {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hero-title {
+    font-size: 42px;
+  }
+  .features {
+    padding: 60px 32px;
+  }
+}

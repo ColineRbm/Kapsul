@@ -102,7 +102,9 @@
   padding: 0.3rem 0.5rem;
   cursor: pointer;
   color: #a09060;
-  transition: color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .transaction-actions button:hover {
