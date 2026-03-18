@@ -1,0 +1,143 @@
+/* ─── GRILLE PARAMÈTRES ─── */
+.params-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+}
+
+.params-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  border: 1px solid var(--yellow-light);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.params-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.params-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+
+.params-card-desc {
+  font-size: 0.85rem;
+  color: #a09060;
+}
+
+/* ─── CHAMP NOM ─── */
+.params-input-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.params-input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--yellow-light);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--blue-dark);
+  background: var(--yellow-pale);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.params-input:focus {
+  border-color: var(--yellow);
+}
+
+.params-btn {
+  padding: 0.6rem 1.25rem;
+  background: var(--blue-dark);
+  color: var(--yellow);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  white-space: nowrap;
+}
+
+.params-btn:hover {
+  background: var(--blue-navy);
+}
+
+.params-btn.danger {
+  background: #fef2f2;
+  color: var(--red);
+  border: 1px solid #fecaca;
+}
+
+.params-btn.danger:hover {
+  background: #fee2e2;
+}
+
+/* ─── TOGGLE THÈME ─── */
+.theme-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-label {
+  font-size: 0.9rem;
+  color: var(--blue-dark);
+}
+
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 26px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--yellow-light);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: 1px solid var(--yellow);
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: var(--blue-dark);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle input:checked + .toggle-slider {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(22px);
+  background: var(--yellow);
+}

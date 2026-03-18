@@ -1,0 +1,139 @@
+/* ─── FORMULAIRE ─── */
+.form-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--blue-dark);
+}
+
+.form-div {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: white;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--yellow-light);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.form-div input,
+.form-div select {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--yellow-light);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--blue-dark);
+  background-color: var(--yellow-pale);
+  flex: 1;
+  min-width: 120px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-div input:focus,
+.form-div select:focus {
+  border-color: var(--yellow);
+}
+
+.form-div button {
+  padding: 0.6rem 1.5rem;
+  background-color: var(--blue-dark);
+  color: var(--yellow);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  white-space: nowrap;
+}
+
+.form-div button:hover {
+  background-color: var(--blue-navy);
+}
+
+/* ─── LISTE TRANSACTIONS ─── */
+.transactions-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--blue-dark);
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--yellow-light);
+  margin-bottom: 0.6rem;
+  box-shadow: var(--shadow);
+  gap: 1rem;
+}
+
+.transaction-item span {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.transaction-item span:last-of-type {
+  text-align: right;
+  font-weight: 600;
+}
+
+.transaction-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.transaction-actions button {
+  background: none;
+  border: 1px solid var(--yellow-light);
+  border-radius: 8px;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  color: #a09060;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.transaction-actions button:hover {
+  color: var(--blue-dark);
+  border-color: var(--yellow);
+}
+
+/* ─── MODE ÉDITION ─── */
+.edit-input {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--yellow);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--blue-dark);
+  background: white;
+  flex: 1;
+  outline: none;
+}
+
+.saveButton {
+  padding: 0.4rem 0.9rem;
+  background: var(--blue-dark);
+  color: var(--yellow);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.15s;
+}
+
+.saveButton:hover {
+  background: var(--blue-navy);
+}

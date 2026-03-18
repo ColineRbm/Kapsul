@@ -3,48 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kapsul | Home</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Ajout bibliothèque Lucide pour icônes -->
+    <title>Kapsul | Transactions</title>
+    <link rel="stylesheet" href="../.general/style.css" />
+    <link rel="stylesheet" href="style-index.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
     <div class="app">
       <aside class="sidebar">
-        <h2>Kapsul</h2>
-        <ul>
-          <li>🏡 Dashboard</li>
-          <li>💰 Transactions</li>
-          <li>📊 Statistiques</li>
-          <li>⚙️ Paramètres</li>
-        </ul>
+        <div class="logo-block">
+          <a href="index.html" class="logo">Kapsul</a>
+          <span class="logo-sub">Budget perso</span>
+        </div>
+        <nav>
+          <a href="index.html" class="active">
+            <span class="nav-emoji">💰</span> Transactions
+          </a>
+          <a href="../stats/statistiques.html">
+            <span class="nav-emoji">📊</span> Statistiques
+          </a>
+          <a href="../params/parametres.html">
+            <span class="nav-emoji">⚙️</span> Paramètres
+          </a>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="avatar" id="sidebar-avatar">K</div>
+          <div>
+            <div class="user-name" id="sidebar-username">Mon compte</div>
+            <div class="user-plan">Kapsul</div>
+          </div>
+        </div>
       </aside>
+
       <div class="content">
         <header class="topbar">
-          <h1>Dashboard</h1>
+          <h1>Transactions</h1>
+          <span class="topbar-badge" id="mois-badge"></span>
         </header>
+
         <main>
           <section class="summary">
-            <div class="card">
+            <div class="card accent">
               <span class="card-label">Solde total</span>
               <span class="card-amount" id="solde-total">0,00 €</span>
             </div>
             <div class="card">
-              <span class="card-label">Revenus du mois</span>
+              <span class="card-label">Revenus</span>
               <span class="card-amount income" id="total-revenus">0,00 €</span>
             </div>
             <div class="card">
-              <span class="card-label">Dépenses du mois</span>
+              <span class="card-label">Dépenses</span>
               <span class="card-amount expense" id="total-depenses"
                 >0,00 €</span
               >
             </div>
           </section>
+
           <section class="form-section">
             <h2>Ajouter une transaction</h2>
             <div class="form-div">
-              <input type="text" id="description" placeholder="Description" />
-              <input type="number" id="montant" placeholder="Montant (€)" />
+              <input
+                type="text"
+                id="description"
+                placeholder="Description"
+                autocomplete="off"
+              />
+              <input
+                type="number"
+                id="montant"
+                placeholder="Montant (€)"
+                autocomplete="off"
+              />
               <select id="type">
                 <option value="income">Revenu</option>
                 <option value="expense">Dépense</option>
@@ -60,14 +89,23 @@
               <button id="button-add">Ajouter</button>
             </div>
           </section>
+
           <section class="transactions-section">
-            <h2>Transactions</h2>
+            <h2>Historique</h2>
             <div id="transactions-list"></div>
           </section>
         </main>
       </div>
     </div>
-    <footer></footer>
     <script src="script.js"></script>
+    <script>
+      // Affiche le mois courant dans le badge
+      const mois = new Date().toLocaleDateString("fr-FR", {
+        month: "long",
+        year: "numeric",
+      });
+      document.getElementById("mois-badge").textContent =
+        mois.charAt(0).toUpperCase() + mois.slice(1);
+    </script>
   </body>
 </html>
